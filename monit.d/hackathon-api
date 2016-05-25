@@ -1,3 +1,3 @@
 check process hackathon-api with pidfile /var/services/hackathon-api/app.pid
-start program  "/usr/sbin/service hackathon-api start"
-stop program  "/usr/sbin/service hackathon-api stop"
+start program  "/etc/init.d/hackathon-api start"
+stop program  "/etc/init.d/hackathon-api stop"
