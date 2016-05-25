@@ -6,7 +6,7 @@ PID_DIR="$APP_DIR"
 PID_FILE="$PID_DIR/app.pid"
 LOG_DIR="$APP_DIR"
 LOG_FILE="$LOG_DIR/app.log"
-PYTHON_PATH = ${which python3}
+PYTHON_PATH = `which python3`
 
 ###############
 
