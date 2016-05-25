@@ -7,11 +7,13 @@ from libs.restException import RestException
 from flask_socketio import SocketIO, emit
 from libs.tropoService import TropoService
 from libs.sparkService import SparkService
+from spark.messages import Message
 
 app = Flask(__name__)
 cors = CORS(app)
 socketio = SocketIO(app)
 actions = []
+alerts = []
 tropo = TropoService(logging)
 spark = SparkService(logging)
 
@@ -56,6 +58,20 @@ def create_action():
         spark.createMessage(action['roomname'], action['message'])
     actions.append(action)
     return Response(json.dumps(action), mimetype='application/json'), 201
+
+
+# base route for getting the alerts
+@app.route('/alerts', methods=['GET'])
+def get_alerts():
+    return Response(json.dumps(alerts), mimetype='application/json')
+
+
+# route to create an action
+@app.route('/alerts', methods=['POST'])
+def create_alert():
+    alert = Message.fromJson(request.json)
+    alerts.append(alert)
+    return Response(json.dumps(alert), mimetype='application/json'), 201
 
 
 @app.route('/rooms', methods=['GET'])
