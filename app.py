@@ -71,7 +71,7 @@ def create_alert():
     envelope = request.json
     alert = spark.getMessage(envelope['data']['id'])
     alerts.append(alert)
-    return Response(json.dumps(alert), mimetype='application/json'), 201
+    return Response(json.dumps(sparkJsonSafe(alert)), mimetype='application/json'), 201
 
 
 @app.route('/rooms', methods=['GET'])
