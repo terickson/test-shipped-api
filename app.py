@@ -63,7 +63,7 @@ def create_action():
 # base route for getting the alerts
 @app.route('/alerts', methods=['GET'])
 def get_alerts():
-    return Response(json.dumps(alerts), mimetype='application/json')
+    return Response(json.dumps(sparkJsonSafe(alerts)), mimetype='application/json')
 
 
 # route to create an action
