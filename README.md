@@ -10,14 +10,14 @@ Content-Type: application/json
 }
 
 {"type":"spark",
-"roomname": "spark test room",
+"roomname": "hackathon2016",
 "message":"This is a test"
 }
 
 POST http://0.0.0.0:5000/rooms
 Content-Type: application/json
 
-{"title":"spark test room"}
+{"title":"hackathon2016"}
 
 POST http://0.0.0.0:5000/rooms/spark%20test%20room/members
 Content-Type: application/json
@@ -28,7 +28,7 @@ POST http://0.0.0.0:5000/webhooks
 Content-Type: application/json
 
 {
-"roomname":"spark test room",
+"roomname":"hackathon2016",
 "url":"https://www.wwt.com/", 
 "name": "testHook"
 }
