@@ -86,6 +86,7 @@ class Message(object):
     @classmethod
     def get(cls, session, id=None):
         ret = []
+        logging.error(cls.url(id))
         messages = json.loads(session.get(cls.url(id)).text)
         logging.error(messages)
         if not isinstance(messages, list):
