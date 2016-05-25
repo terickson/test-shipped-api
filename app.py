@@ -7,7 +7,6 @@ from libs.restException import RestException
 from flask_socketio import SocketIO, emit
 from libs.tropoService import TropoService
 from libs.sparkService import SparkService
-from spark.messages import Message
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -70,7 +69,7 @@ def get_alerts():
 @app.route('/alerts', methods=['POST'])
 def create_alert():
     envelope = request.json
-    alert = Message.get(envelope['data']['id'])
+    alert = spark.getMessage(envelope['data']['id'])
     alerts.append(alert)
     return Response(json.dumps(alert), mimetype='application/json'), 201
 

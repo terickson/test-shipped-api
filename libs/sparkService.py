@@ -4,6 +4,7 @@ from spark.webhooks import Webhook
 from spark.people import Person
 from spark.membership import Membership
 from libs.restException import RestException
+from spark.messages import Message
 
 
 class SparkService:
@@ -53,6 +54,9 @@ class SparkService:
         webhook.set_event('created')
         webhook.create(self.session)
         return webhook
+
+    def getMessage(self, id):
+        return Message.get(self.session, id)
 
     def getWebhooks(self):
         return Webhook.get(self.session)
