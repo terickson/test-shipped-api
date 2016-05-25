@@ -55,7 +55,7 @@ start_it() {
 stop_process() {
     PID=$(get_pid)
     echo "Killing process $PID"
-    pkill -P $PID
+    kill -9 $PID
 }
 
 remove_pid_file() {
