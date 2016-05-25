@@ -76,6 +76,19 @@ class Message(object):
         return obj
 
     @classmethod
-    def url(cls):
-        return '/messages'
+    def url(cls, id=None):
+        url = '/messages'
+        if id:
+            url + '/' + str(id)
+        return url
 
+    @classmethod
+    def get(cls, session, id=None):
+        ret = []
+        messages = json.loads(session.get(cls.url(id)).text)
+        if not isinstance(messages, list):
+            return messages
+        for message in messages:
+            obj = cls.from_json(message)
+            ret.append(obj)
+        return ret

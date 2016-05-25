@@ -69,7 +69,8 @@ def get_alerts():
 # route to create an action
 @app.route('/alerts', methods=['POST'])
 def create_alert():
-    alert = Message.from_json(request.json)
+    envelope = request.json
+    alert = Message.get(envelope['data']['id'])
     alerts.append(alert)
     return Response(json.dumps(alert), mimetype='application/json'), 201
 
