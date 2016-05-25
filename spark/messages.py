@@ -1,5 +1,5 @@
 import json
-from pprint import pprint
+import logging
 
 
 class Message(object):
@@ -87,7 +87,7 @@ class Message(object):
     def get(cls, session, id=None):
         ret = []
         messages = json.loads(session.get(cls.url(id)).text)
-        pprint(messages)
+        logging.error(messages)
         if not isinstance(messages, list):
             return cls.from_json(messages)
         for message in messages:
