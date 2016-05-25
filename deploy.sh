@@ -22,7 +22,6 @@ for i in ${hosts[@]}; do
     ssh ${user}@${i} ${serviceSetupCommand}
     ssh ${user}@${i} "${sudoCmd}/etc/init.d/hackathon-api stop"
     ssh ${user}@${i} "${sudoCmd}rm -f /var/services/hackathon-api/app.pid"
-    ssh ${user}@${i} "${sudoCmd}/etc/init.d/hackathon-api start"
     ssh ${user}@${i} "${sudoCmd}cp -f /var/services/hackathon-api/monit.d/hackathon-api ${monitDir}"
     ssh ${user}@${i} "${sudoCmd}service monit reload"
 done
