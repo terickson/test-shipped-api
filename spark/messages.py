@@ -85,7 +85,11 @@ class Message(object):
     @classmethod
     def get(cls, session, id=None):
         ret = []
-        messages = json.loads(session.get(cls.url(id)).text)
+        messageUrl = cls.url(id)
+        print(messageUrl)
+        messageData = session.get(messageUrl)
+        print(messageData.text)
+        messages = json.loads(messageData.text)
         if not isinstance(messages, list):
             return messages
         for message in messages:
