@@ -1,5 +1,4 @@
 import json
-import logging
 
 
 class Message(object):
@@ -80,16 +79,13 @@ class Message(object):
     def url(cls, messageId=None):
         url = '/messages'
         if messageId:
-            url + '/' + str(messageId)
+            url += '/' + str(messageId)
         return url
 
     @classmethod
     def get(cls, session, messageId=None):
         ret = []
-        logging.error(messageId)
-        logging.error(cls.url(messageId))
         messages = json.loads(session.get(cls.url(messageId)).text)
-        logging.error(messages)
         if not isinstance(messages, list):
             return cls.from_json(messages)
         for message in messages:
