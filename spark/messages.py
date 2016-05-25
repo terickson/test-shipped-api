@@ -77,17 +77,18 @@ class Message(object):
         return obj
 
     @classmethod
-    def url(cls, id=None):
+    def url(cls, messageId=None):
         url = '/messages'
-        if id:
-            url + '/' + str(id)
+        if messageId:
+            url + '/' + str(messageId)
         return url
 
     @classmethod
-    def get(cls, session, id=None):
+    def get(cls, session, messageId=None):
         ret = []
-        logging.error(cls.url(id))
-        messages = json.loads(session.get(cls.url(id)).text)
+        logging.error(messageId)
+        logging.error(cls.url(messageId))
+        messages = json.loads(session.get(cls.url(messageId)).text)
         logging.error(messages)
         if not isinstance(messages, list):
             return cls.from_json(messages)

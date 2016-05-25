@@ -55,8 +55,8 @@ class SparkService:
         webhook.create(self.session)
         return webhook
 
-    def getMessage(self, id):
-        return Message.get(self.session, id)
+    def getMessage(self, messageId):
+        return Message.get(self.session, messageId)
 
     def getWebhooks(self):
         return Webhook.get(self.session)
