@@ -56,7 +56,7 @@ def create_action():
         tropo.sendMessages(action['message'], action['phoneNumbers'])
     elif action['type'] == 'spark':
         spark.createMessage(action['roomname'], action['message'])
-    action['id'] = uuid4()
+    action['id'] = uuid4().urn
     actions.append(action)
     return Response(json.dumps(action), mimetype='application/json'), 201
 
