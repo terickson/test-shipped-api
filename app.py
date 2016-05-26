@@ -57,6 +57,7 @@ def create_action():
     elif action['type'] == 'spark':
         spark.createMessage(action['roomname'], action['message'])
     action['id'] = str(uuid4())
+    logging.error(action)
     actions.append(action)
     return Response(json.dumps(action), mimetype='application/json'), 201
 
