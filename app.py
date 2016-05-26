@@ -74,7 +74,7 @@ def create_alert():
     alert = spark.getMessage(envelope['data']['id'])
     if 'ALERT: ' in alert.text:
         alerts.append(alert)
-        emit('alert', {'data': alert.text})
+        socketio.emit('alert', {'data': alert.text})
     return Response(json.dumps(sparkJsonSafe(alert)), mimetype='application/json'), 201
 
 
