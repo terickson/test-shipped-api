@@ -7,6 +7,7 @@ from libs.restException import RestException
 from flask_socketio import SocketIO, emit
 from libs.tropoService import TropoService
 from libs.sparkService import SparkService
+from uuid import uuid4
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -55,6 +56,7 @@ def create_action():
         tropo.sendMessages(action['message'], action['phoneNumbers'])
     elif action['type'] == 'spark':
         spark.createMessage(action['roomname'], action['message'])
+    action['id'] = uuid4()
     actions.append(action)
     return Response(json.dumps(action), mimetype='application/json'), 201
 
