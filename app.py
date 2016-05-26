@@ -72,7 +72,9 @@ def get_alerts():
 def create_alert():
     envelope = request.json
     alert = spark.getMessage(envelope['data']['id'])
-    alerts.append(alert)
+    if 'ALERT: ' in alert.text:
+        alerts.append(alert)
+        emit('alert', {'data': alert.text})
     return Response(json.dumps(sparkJsonSafe(alert)), mimetype='application/json'), 201
 
 
