@@ -11,7 +11,7 @@ def deleteData(url):
         raise Exception('Delete to ' + url + ' returned a status of ' + str(resp.status_code) + ' ' + resp.text)
 
 roomName = "hackathon2016"
-members = [{"personEmail": "todd.erickson@wwt.com"}, {"personEmail": "derek.lohman@wwt.com"}, {"personEmail": "shawn.donoho@wwt.com>"}, {"personEmail": "tim.fuller@asynchrony.com"}, {"personEmail": "Dave.Guidos@asynchrony.com"}]
+members = [{"personEmail": "todd.erickson@wwt.com"}, {"personEmail": "derek.lohman@wwt.com"}, {"personEmail": "shawn.donoho@wwt.com"}, {"personEmail": "tim.fuller@asynchrony.com"}, {"personEmail": "dave.guidos@asynchrony.com"}]
 webhookName = "hackathonHook"
 
 deleteData('/webhooks/' + webhookName)
