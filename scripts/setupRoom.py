@@ -11,7 +11,7 @@ def postData(url, data):
         raise Exception('Post to ' + url + ' returned a status of ' + str(resp.status_code) + ' ' + resp.text)
 
 roomData = {"title": "hackathon2016"}
-members = [{"personEmail": "todd.erickson@wwt.com"}]
+members = [{"personEmail": "todd.erickson@wwt.com"}, {"personEmail": "derek.lohman@wwt.com"}, {"personEmail": "shawn.donoho@wwt.com>"}, {"personEmail": "tim.fuller@asynchrony.com"}, {"personEmail": "Dave.Guidos@asynchrony.com"}]
 webhookData = {"roomname": roomData['title'], "url": baseUrl + "/alerts", "name": "hackathonHook"}
 
 postData('/rooms', roomData)
