@@ -170,7 +170,7 @@ def delete_webhook(webhookName):
 @app.route('/event', methods=['POST'])
 def create_envent():
     event = request.json
-    socketio.emit(event['event'], {'data': event['data']})
+    socketio.emit(event['event'], event['data'])
     return Response(json.dumps(event), mimetype='application/json'), 201
 
 
