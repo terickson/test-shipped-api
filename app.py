@@ -4,7 +4,7 @@ import logging
 from flask import Flask, request, Response
 from flask.ext.cors import CORS
 from libs.restException import RestException
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO
 from libs.tropoService import TropoService
 from libs.sparkService import SparkService
 from uuid import uuid4
@@ -164,6 +164,14 @@ def get_webhook(webhookName):
 def delete_webhook(webhookName):
     spark.deleteWebhook(webhookName)
     return ('', 204)
+
+
+# route to create an event
+@app.route('/event/', methods=['POST'])
+def create_envent():
+    event = request.json
+    socketio.emit(event['event'], {'data': event['data']})
+    return Response(json.dumps(event), mimetype='application/json'), 201
 
 
 @socketio.on('broadcast')

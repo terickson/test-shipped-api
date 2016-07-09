@@ -5,7 +5,7 @@ POST http://0.0.0.0:5000/actions
 Content-Type: application/json
 
 {"type":"tropo",
-"phoneNumbers": ["15209756399"],
+"phoneNumbers": ["15209756399", "13145291038"],
 "message":"This is a test"
 }
 
